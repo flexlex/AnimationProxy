@@ -1,32 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>AniProxyTest</title>
-    <script src="aniprox.js"></script>
-    <style>
-        .box
-        {
-            position: relative;
-            top: 0;
-            left: 0;
-            width: 200px;
-            height: 200px;
-            background: #f00;
-            display: inline-block;
-            margin: 10px;
-            vertical-align: top;
-        }
-        .cssani
-        {
-            -webkit-transition: all 1s linear;
-            -o-transition: all 1s linear;
-            transition: all 1s linear;
-        }
-    </style>
-</head>
-<body>
-    <div class="box" onclick="var ap = this.aniprox(1000,'l',true); ap.height='400px'; ap.width='400px'"></div>
-    <div class="box cssani" onclick="this.style.height='400px';this.style.width='400px';"></div>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <title>AniProxyTest</title>
+        <script src="aniprox.js"></script>
+        <style>
+            body{
+                margin: 0;
+                text-align: center;
+            }
+            .box
+            {
+                position: relative;
+                top: 0;
+                left: 0;
+                width: 200px;
+                height: 200px;
+                background: #f00;
+                display: inline-block;
+                margin: 10px;
+                vertical-align: top;
+                text-align: center;
+                font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+                overflow: auto;
+                
+            }
+            .box .label
+            {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                display: block;
+                -webkit-transform: translate(-50%,-50%);
+                -ms-transform: translate(-50%,-50%);
+                -o-transform: translate(-50%,-50%);
+                transform: translate(-50%,-50%);
+            }
+            .cssani
+            {
+                -webkit-transition: all 1s linear;
+                -o-transition: all 1s linear;
+                transition: all 1s linear;
+            }
+            .box.b
+            {
+                background-color: #00f;
+                color: #fff;
+                -webkit-transition-timing-function: ease;
+                -o-transition-timing-function: ease;
+                transition-timing-function: ease;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box" onclick="var ap = this.aniprox(1000,'l',true); ap.height='400px'; ap.width='400px'"><span class="label">AniProx</span></div>
+        <div class="box cssani" onclick="this.style.height='400px';this.style.width='400px';"><span class="label">CSS</span></div>
+        
+        <br>
+
+        <div class="box b" onclick="var ap = this.aniprox(1000,'cool',true); ap.height='400px'; ap.width='400px'"><span class="label">AniProx</span></div>
+        <div class="box b cssani" onclick="this.style.height='400px';this.style.width='400px';"><span class="label">CSS</span></div>
+
+        <br>
+
+        <div class="box" onclick="this.aniprox(1000,'normal').opacity=0;">
+            <span class="label">opacity</span>
+        </div>
+
+        <br>
+
+        <div class="box" onclick="this.aniprox(1000,'sin').scrollTop='20%';">
+            <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia modi cupiditate saepe doloremque est illo iure ad, veniam dolore nulla ex blanditiis maiores non debitis perferendis amet rerum nam distinctio.</div>
+            <div>Nemo dignissimos rem vitae, maxime, illo doloribus fugiat rerum deleniti assumenda voluptatibus corrupti adipisci commodi officiis consequuntur voluptate ipsa odit quos atque, placeat suscipit. Culpa, expedita! Alias accusantium, recusandae ex.</div>
+            <div>Error soluta ut beatae reprehenderit fugit repudiandae id placeat, distinctio doloremque, odit officia eligendi sapiente, voluptatum dolor. Laboriosam necessitatibus distinctio cumque dolorem. Tempora facere accusamus eveniet et laboriosam nulla? Maiores!</div>
+            <div>Numquam sapiente, odio, natus esse porro reprehenderit eaque, voluptatem animi velit ipsum dicta eius possimus laboriosam beatae itaque quaerat placeat repudiandae, voluptates iure. Blanditiis nesciunt quisquam nisi voluptatibus veniam, earum!</div>
+            <div>Aliquam iure totam neque rem tempore, harum repellat hic nemo voluptatem, quasi, temporibus veritatis sequi blanditiis at officiis dignissimos. Nisi laborum accusamus debitis laudantium cupiditate repellat amet architecto libero, illum!</div>
+            <div>Dolorum sequi dignissimos possimus est mollitia repellendus magni esse explicabo aliquam, autem voluptas? Maiores perspiciatis nulla saepe, suscipit ea adipisci nostrum distinctio nihil rem temporibus dignissimos quod nesciunt. Quod, debitis.</div>
+        </div>
+    </body>
 </html>

@@ -54,24 +54,69 @@ Element.prototype.aniprox = function(dur,easing,concat){
     var changeObjects = {concat:concat}, lol;
     var changes = {};
     var anis = [];
+    var anitypes={
+        size:0,
+        ratio:1,
+        numeric:2
+    };
+    var unit = "";
     var up = function(rap){
         for(lol in changeObjects)
         {
             if(lol in styles && !(lol in changes))
             {
-                changes[lol]=[parseFloat(styles[lol]),parseFloat(changeObjects[lol])-parseFloat(styles[lol]),"px"];
+                var t = anitypes.size;
+                if(lol == "opacity")
+                {
+                    t = anitypes.ratio;
+                }
+                if(lol == "scrollTop")
+                {
+                    t = anitypes.numeric;
+                    var v = changeObjects[lol];
+                    if(v == "bottom" || v=="end")
+                    {
+                        changeObjects[lol]=ele.scrollHeight-ele.offsetHeight;
+                    }
+                    else if(v == "top" || v=="start")
+                    {
+                        changeObjects[lol]=0;
+                    }
+                    else if(v == "mid" || v=="middle")
+                    {
+                        changeObjects[lol]=(ele.scrollHeight/2-ele.offsetHeight/2);
+                    }
+                    else if(v.indexOf("%")!==-1)
+                    {
+                        var i = parseFloat(v)/100;
+                        changeObjects[lol]=(ele.scrollHeight-ele.offsetHeight)*i;
+                    }
+                }
+                changes[lol]=[parseFloat(styles[lol]),parseFloat(changeObjects[lol])-parseFloat(styles[lol]),"px",t];
             }
         }
         for(lol in changes)
         {
             if(lol == "scrollTop")
             {
-                ele.scrollTop = xy(rap)*changes[lol][1]+changes[lol][0];
+                var v = xy(rap)*changes[lol][1]+changes[lol][0]
+                console.log(xy(rap),changes[lol][1],changes[lol][0]);
+                console.log(v);
+                ele.scrollTop = v;
                 continue;
             }
-            ele.style[lol]=(xy(rap)*changes[lol][1]+changes[lol][0])+changes[lol][2];
+            switch(changes[lol][3])
+            {
+                case anitypes.size:
+                    unit = changes[lol][2];
+                    break;
+                case anitypes.ratio:
+                case anitypes.numeric:
+                    unit=0;
+                    break;
+            }
+            ele.style[lol]=(xy(rap)*changes[lol][1]+changes[lol][0])+unit;
         }
-        //console.log(changes);
     };
     aniprox(dur,up);
     setTimeout(up,0);
