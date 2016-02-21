@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AniProxyTest</title>
+    <script src="aniprox.js"></script>
+    <style>
+        .box
+        {
+            position: relative;
+            top: 0;
+            left: 0;
+            width: 200px;
+            height: 200px;
+            background: #f00;
+            display: inline-block;
+            margin: 10px;
+            vertical-align: top;
+        }
+        .cssani
+        {
+            -webkit-transition: all 1s linear;
+            -o-transition: all 1s linear;
+            transition: all 1s linear;
+        }
+    </style>
+</head>
+<body>
+    <div class="box" onclick="var ap = this.aniprox(1000,'l',true); ap.height='400px'; ap.width='400px'"></div>
+    <div class="box cssani" onclick="this.style.height='400px';this.style.width='400px';"></div>
+</body>
+</html>
