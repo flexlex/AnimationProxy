@@ -33,7 +33,8 @@ Fortunately i came up with a idea to create easily (very, very, easily) custom a
 The complex mode does not focus on creating animation, but to have a function that speeds up the creation of an animation.
 Usage:
 ```js
-aniprox(duration,fx)```
+aniprox(duration,fx)
+```
 *duration: *in ms
 *fx:* a function that has a param (float) rapresenting the ratio of the animation progress (from 0 - 1)
 
