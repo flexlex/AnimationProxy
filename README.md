@@ -51,7 +51,8 @@ aniprox(1000,function(ratio){
 ```
 Equals (in quickmode)
 ```js
-document.body.aniprox(1000,"sin").scrollTop=200```
+document.body.aniprox(1000,"sin").scrollTop=200
+```
 
 As you may have noticed, complex mode allows you to create all sorts of animation, since the timing and the properties to animate have to be defined by you.
 
