@@ -100,8 +100,6 @@ Element.prototype.aniprox = function(dur,easing,concat){
             if(lol == "scrollTop")
             {
                 var v = xy(rap)*changes[lol][1]+changes[lol][0]
-                console.log(xy(rap),changes[lol][1],changes[lol][0]);
-                console.log(v);
                 ele.scrollTop = v;
                 continue;
             }
@@ -116,6 +114,12 @@ Element.prototype.aniprox = function(dur,easing,concat){
                     break;
             }
             ele.style[lol]=(xy(rap)*changes[lol][1]+changes[lol][0])+unit;
+            if(rap==1)
+            {
+                var evt = document.createEvent("Event");
+                evt.initEvent("aniproxend",true,true);
+                ele.dispatchEvent(evt);
+            }
         }
     };
     aniprox(dur,up);
